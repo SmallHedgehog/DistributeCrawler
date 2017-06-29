@@ -65,6 +65,8 @@ class net(object):
     def get(self, url):
         """Fetch url to get html document by self.opener"""
         htmlDoc = None
+        if url == None:
+            return htmlDoc
         url = url.strip()
         if url == '' or not url.startswith('http'):
             return htmlDoc
@@ -76,7 +78,10 @@ class net(object):
             htmlDoc = self.opener.open(url)
         except urllib2.HTTPError as error:
             code = error.code
-            error_reason = error.read()
+            try:
+                error_reason = error.read()
+            except Exception as error:
+                error_reason = error
             if code == 400:
                 log.info("400 Error(请求参数出错!) reason: %r url: %r", error_reason, url)
             elif code == 403:
