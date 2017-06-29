@@ -46,6 +46,14 @@ class Config(object):
     def get_proxies(self):
         return self.attris.get('proxies', None)
 
+    @property
+    def get_timeout(self):
+        return self.attris.get('time_out', None)
+
+    @property
+    def get_redis(self):
+        return self.attris.get('redis', None)
+
 if __name__ == '__main__':
     Con = Config()
     print(Con.get_max_tasks)
