@@ -20,7 +20,7 @@ class logHandler(logging.Logger):
         self.level = level
         logging.Logger.__init__(self, name = name, level = level)
         self.__setFileHandler__()
-        self.__setStreamHandler__()
+        # self.__setStreamHandler__()   # Print logs into console
 
     def __setFileHandler__(self, level=None):
         """
