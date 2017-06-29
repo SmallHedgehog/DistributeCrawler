@@ -11,7 +11,7 @@ import re
 class regexRules(object):
     """rules全部匹配，nRules全不匹配"""
     def __init__(self, rules, nRules):
-        super(regexRules).__init__()
+        super(regexRules, self).__init__()
         # URL正则规则
         self.rules = rules
         self.nRules = nRules
@@ -38,22 +38,26 @@ class regexRules(object):
         """判断url是否匹配成功"""
         if self.__empty():
             return True
-        if self.rules is not None:
-            for pattern in self.rules:
-                if re.match(pattern, url) is None:
-                    return False
+
         if self.nRules is not None:
             for pattern in self.nRules:
                 if re.match(pattern, url) is not None:
                     return False
+        if self.rules is not None:
+            for pattern in self.rules:
+                if re.match(pattern, url) is None:
+                    return False
+
         return True
 
 if __name__ == '__main__':
     urlRules = regexRules([
-        'http://'
-    ], 'http://')
+        '(.*?)\d\.htm*'
+    ], [
+        '(.*?)video(.*?)'
+    ])
 
-    if urlRules.isMatched('http://www.baidu.com/'):
+    if urlRules.isMatched('http://news.xinhuanet.com/video/2017-05/16/c_129605135.htm'):
         print('True')
     else:
         print('False')
