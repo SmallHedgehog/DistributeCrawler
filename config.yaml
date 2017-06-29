@@ -2,7 +2,8 @@
 
 # Crawler设置
 max_redirect: 10        # 请求URL时允许的最大重定向深度
-max_tasks: 20           # 最大的工作数量(线程）
+max_tasks: 5            # 最大的工作数量(线程）
+time_out: 5             # 设置超时时间
 
 # 反爬虫机制策略
 
@@ -17,3 +18,12 @@ sleep_time: 0
 
 # headers（提供随机User-Agent）,模拟浏览器请求
 # headers: dict
+
+# redis设置
+redis:
+      host: 120.95.132.153  # host ip address
+      port: 6379            # host redis server port
+      password: ''          # host redis server password
+      type: q               # host redis QUEUE(q: Queue or p: Priority queue)
+      uniqueSet: unique     # collection's key to judge URL whether in 'judge_repeat' collection
+      urlQueue: URLs        # URLs queue's key on redis server
