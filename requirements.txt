@@ -3,3 +3,4 @@ lxml
 mechanize
 BeautifulSoup4
 pyyaml
+redis
