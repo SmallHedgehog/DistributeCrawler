@@ -116,7 +116,7 @@ class Spider(object):
                     # Sleep one second
                     time.sleep(1)
                 else:
-                    print URL.getUrl
+                    # print URL.getUrl
                     # step1: download URL
                     document = self.downloader.download(URL)
                     if document:
@@ -134,6 +134,7 @@ class Spider(object):
                         document = self.pageProcessor.pageParser(document)
                         # step5: save the result from document
                         self.saver.save(document.getItems())
+                        document.clear()
                 self.scheduler.done()
 
                 # Exit
