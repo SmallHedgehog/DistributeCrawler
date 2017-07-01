@@ -62,6 +62,20 @@ class Document(object):
 
     def getItems(self):
         return  self.items
+    
+    def setItems(self, key, value):
+        try:
+            self.items[key] = value
+        except:
+            pass
+    
+    def getParserDoc(self):
+        return self.parserDoc
+    
+    def clear(self):
+        self.items = {}
+        self.newUrls = []
+        self.parserDoc = None
 
 if __name__ == '__main__':
     import requests
