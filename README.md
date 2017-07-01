@@ -41,7 +41,7 @@
             super(mySaver, self).__init__()
 
         def save(self, data):
-            """Print to console"""
+            """Print data to console"""
             for key in data.keys():
                 print key, data[key]
 
